@@ -1,6 +1,6 @@
 {
   "name": "react-responsive-scrollbox",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An util component for react to create a responsive scrollable area with customizable scrollbar.",
   "main": "dist/index.js",
   "scripts": {
@@ -17,14 +17,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SUCHMOKUO/react-scrollbox.git"
+    "url": "git+https://github.com/SUCHMOKUO/react-responsive-scrollbox.git"
   },
   "author": "mokuo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SUCHMOKUO/react-scrollbox/issues"
+    "url": "https://github.com/SUCHMOKUO/react-responsive-scrollbox/issues"
   },
-  "homepage": "https://github.com/SUCHMOKUO/react-scrollbox#readme",
+  "homepage": "https://github.com/SUCHMOKUO/react-responsive-scrollbox#readme",
   "peerDependencies": {
     "react": "^16.8.0"
   },
