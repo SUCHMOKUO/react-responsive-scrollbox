@@ -46,14 +46,14 @@ export function culcSize(
   state.viewPortHeight = viewPort.clientHeight;
   state.contentHeight = content.offsetHeight;
   state.vRatio = state.viewPortHeight / state.contentHeight;
-  state.vThumbHeight = Math.round(state.vRatio * state.viewPortHeight);
+  state.vThumbHeight = toFixed2(state.vRatio * state.viewPortHeight);
   state.vTrackHeight = vTrack.clientHeight;
   state.maxVThumbTop = state.vTrackHeight - state.vThumbHeight;
 
   state.viewPortWidth = viewPort.clientWidth;
   state.contentWidth = content.offsetWidth;
   state.hRatio = state.viewPortWidth / state.contentWidth;
-  state.hThumbWidth = Math.round(state.hRatio * state.viewPortWidth);
+  state.hThumbWidth = toFixed2(state.hRatio * state.viewPortWidth);
   state.hTrackWidth = hTrack.clientWidth;
   state.maxHThumbLeft = state.hTrackWidth - state.hThumbWidth;
 }
