@@ -164,8 +164,11 @@ export default function ScrollBox(props: Props) {
 
   useEffect(() => {
     const box = boxRef.current as HTMLDivElement;
+    const content = contentRef.current as HTMLDivElement;
     resizeObserver.observe(box);
+    resizeObserver.observe(content);
     box.onresize = reset;
+    content.onresize = reset;
 
     const vThumb = vThumbRef.current as HTMLDivElement;
     const hThumb = hThumbRef.current as HTMLDivElement;
@@ -176,7 +179,9 @@ export default function ScrollBox(props: Props) {
 
     return () => {
       resizeObserver.unobserve(box);
+      resizeObserver.unobserve(content);
       box.onresize = null;
+      content.onresize = null;
       vThumb.onmousedown = null;
       hThumb.onmousedown = null;
       viewPort.onscroll = null;
