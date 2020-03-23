@@ -1,0 +1,7 @@
+test/
+coverage/
+src/
+.*
+package-lock.json
+tsconfig.json
+*.config.js
