@@ -54,10 +54,10 @@ Every item of the scrollbar in ScrollBox has its own CSS class name, so you can 
 | Item                       | CSS selector                   |
 | -------------------------- | ------------------------------ |
 | all scrollbar track        | `.scroll-box-track`            |
-| vertical scrollbar track   | `.scroll-box-track.vertival`   |
+| vertical scrollbar track   | `.scroll-box-track.vertical`   |
 | horizontal scrollbar track | `.scroll-box-track.horizontal` |
 | all scrollbar thumb        | `.scroll-box-thumb`            |
-| vertical scrollbar thumb   | `.scroll-box-thumb.vertival`   |
+| vertical scrollbar thumb   | `.scroll-box-thumb.vertical`   |
 | horizontal scrollbar thumb | `.scroll-box-thumb.horizontal` |
 
 For example, if you want to change the background color of vertical scrollbar track to green:
