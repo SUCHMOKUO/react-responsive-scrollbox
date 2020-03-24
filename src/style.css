@@ -6,7 +6,7 @@
   position: relative;
 }
 
-.scroll-box:hover .scroll-box-track {
+.scroll-box:hover > .scroll-box-track {
   opacity: 1;
   visibility: visible;
 }
