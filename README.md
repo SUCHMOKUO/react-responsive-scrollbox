@@ -4,8 +4,7 @@ An util component for react to create a **responsive** scrollable area with **cu
 
 ### Notification
 
-1. This library is using [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver), check your browser support first.
-2. React version should be above **16.8.0**.
+1. React version should be above **16.8.0**.
 
 ### Code demo
 
