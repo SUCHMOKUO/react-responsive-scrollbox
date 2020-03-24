@@ -1,11 +1,11 @@
 {
   "name": "react-responsive-scrollbox",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "An util component for react to create a responsive scrollable area with customizable scrollbar.",
   "main": "dist/index.js",
   "scripts": {
-    "build-dev": "tsc -p . --outDir demo/src/ScrollBox && cp src/*.css demo/src/ScrollBox",
     "build": "tsc -p . && cp src/*.css dist/",
+    "build-dev": "npm run build && cp dist/* demo/src/ScrollBox",
     "pub": "npm run build && npm publish"
   },
   "keywords": [

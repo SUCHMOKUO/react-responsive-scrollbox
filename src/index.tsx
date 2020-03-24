@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef } from "react";
+import contentSizeWatcher from "./content-change-watcher";
 import resizeObserver from "./resize-observer";
 import "./style.css";
 import {
@@ -18,7 +19,6 @@ type Props = {
 export default function ScrollBox(props: Props) {
   const boxRef = useRef<HTMLDivElement>(null);
   const viewPortRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
   const vTrackRef = useRef<HTMLDivElement>(null);
   const hTrackRef = useRef<HTMLDivElement>(null);
   const vThumbRef = useRef<HTMLDivElement>(null);
@@ -47,13 +47,12 @@ export default function ScrollBox(props: Props) {
 
   const reset = useCallback(() => {
     const viewPort = viewPortRef.current as HTMLDivElement;
-    const content = contentRef.current as HTMLDivElement;
     const vTrack = vTrackRef.current as HTMLDivElement;
     const hTrack = hTrackRef.current as HTMLDivElement;
     const vThumb = vThumbRef.current as HTMLDivElement;
     const hThumb = hThumbRef.current as HTMLDivElement;
 
-    culcSize(viewPort, content, vTrack, hTrack, state);
+    culcSize(viewPort, vTrack, hTrack, state);
     resetScrollbar(vTrack, vThumb, hTrack, hThumb, state);
   }, [state]);
 
@@ -165,24 +164,22 @@ export default function ScrollBox(props: Props) {
 
   useEffect(() => {
     const box = boxRef.current as HTMLDivElement;
-    const content = contentRef.current as HTMLDivElement;
-    resizeObserver.observe(box);
-    resizeObserver.observe(content);
-    box.onresize = reset;
-    content.onresize = reset;
-
     const vThumb = vThumbRef.current as HTMLDivElement;
     const hThumb = hThumbRef.current as HTMLDivElement;
     const viewPort = viewPortRef.current as HTMLDivElement;
+
+    resizeObserver.observe(box);
+    box.onresize = reset;
+    contentSizeWatcher.watch(viewPort, reset);
+
     vThumb.onmousedown = startDragVThumb;
     hThumb.onmousedown = startDragHThumb;
     viewPort.onscroll = scroll;
 
     return () => {
       resizeObserver.unobserve(box);
-      resizeObserver.unobserve(content);
+      contentSizeWatcher.unwatch(viewPort);
       box.onresize = null;
-      content.onresize = null;
       vThumb.onmousedown = null;
       hThumb.onmousedown = null;
       viewPort.onscroll = null;
@@ -198,9 +195,7 @@ export default function ScrollBox(props: Props) {
       style={props.style}
     >
       <div ref={viewPortRef} className="scroll-box-view-port">
-        <div ref={contentRef} className="scroll-box-content">
-          {props.children}
-        </div>
+        {props.children}
       </div>
       <div ref={vTrackRef} className="scroll-box-track vertical">
         <div ref={vThumbRef} className="scroll-box-thumb vertical"></div>

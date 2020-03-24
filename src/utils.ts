@@ -38,20 +38,19 @@ export function rafThrottle<T extends Func>(fn: T) {
 
 export function culcSize(
   viewPort: HTMLDivElement,
-  content: HTMLDivElement,
   vTrack: HTMLDivElement,
   hTrack: HTMLDivElement,
   state: State
 ) {
   state.viewPortHeight = viewPort.clientHeight;
-  state.contentHeight = content.offsetHeight;
+  state.contentHeight = viewPort.scrollHeight;
   state.vRatio = state.viewPortHeight / state.contentHeight;
   state.vThumbHeight = toFixed2(state.vRatio * state.viewPortHeight);
   state.vTrackHeight = vTrack.clientHeight;
   state.maxVThumbTop = state.vTrackHeight - state.vThumbHeight;
 
   state.viewPortWidth = viewPort.clientWidth;
-  state.contentWidth = content.offsetWidth;
+  state.contentWidth = viewPort.scrollWidth;
   state.hRatio = state.viewPortWidth / state.contentWidth;
   state.hThumbWidth = toFixed2(state.hRatio * state.viewPortWidth);
   state.hTrackWidth = hTrack.clientWidth;
