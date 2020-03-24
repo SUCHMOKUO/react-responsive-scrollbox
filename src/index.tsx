@@ -11,6 +11,7 @@ import {
 
 type Props = {
   className?: string;
+  style?: React.CSSProperties;
   children: React.ReactNode;
 };
 
@@ -191,7 +192,11 @@ export default function ScrollBox(props: Props) {
   useEffect(reset);
 
   return (
-    <div ref={boxRef} className={`scroll-box ${props.className ?? ""}`}>
+    <div
+      ref={boxRef}
+      className={`scroll-box ${props.className ?? ""}`}
+      style={props.style}
+    >
       <div ref={viewPortRef} className="scroll-box-view-port">
         <div ref={contentRef} className="scroll-box-content">
           {props.children}
