@@ -1,6 +1,9 @@
 const watchers = new Map<Node, MutationObserver>();
 
 function watch(node: Node, callback: () => void) {
+  if (!node) {
+    return;
+  }
   (document as any).fonts.ready.then(callback);
   const mo = new MutationObserver(callback);
   mo.observe(node, {

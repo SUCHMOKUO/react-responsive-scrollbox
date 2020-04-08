@@ -42,6 +42,9 @@ export function culcSize(
   hTrack: HTMLDivElement,
   state: State
 ) {
+  if (!viewPort || !vTrack || !hTrack) {
+    return;
+  }
   state.viewPortHeight = viewPort.clientHeight;
   state.contentHeight = viewPort.scrollHeight;
   state.vRatio = state.viewPortHeight / state.contentHeight;
@@ -64,6 +67,9 @@ export function resetScrollbar(
   hThumb: HTMLDivElement,
   state: State
 ) {
+  if (!vTrack || !vThumb || !hTrack || !hThumb) {
+    return;
+  }
   if (state.vThumbHeight < state.vTrackHeight) {
     vThumb.style.height = state.vThumbHeight + "px";
     vTrack.classList.remove("hiden");
